@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkrim | Decentralized Professional Digital Curation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a1118;
+            --accent-cyan: #7df9ff;
+            --glass-white: rgba(255, 255, 255, 0.05);
+            --text-main: #e0e0e0;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 20%, rgba(125, 249, 255, 0.08) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        header {
+            padding: 80px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 220px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(125, 249, 255, 0.3));
+        }
+
+        .transition-tag {
+            background: transparent;
+            border: 1.5px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: inset 0 0 10px rgba(125, 249, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: white;
+            margin: 0 0 24px 0;
+            line-height: 1.15;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .card {
+            background: var(--glass-white);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(125, 249, 255, 0.03);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .standards {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 60px 20px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 80px;
+        }
+
+        .standards h2 {
+            font-family: 'Outfit', sans-serif;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .standards-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .standards-list span {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(125, 249, 255, 0.15);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* MailerLite Form Custom Centered Styles */
+        @import url("https://assets.mlcdn.com/fonts.css?version=1771946");
+
+        .ml-form-embedSubmitLoad {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .ml-form-embedSubmitLoad:after {
+            content: " ";
+            display: block;
+            width: 11px;
+            height: 11px;
+            margin: 1px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            border-color: #000 #000 #000 transparent;
+            animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+        }
+
+        @keyframes ml-form-embedSubmitLoad {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Centering the Form Container */
+        #mlb2-37795615.ml-form-embedContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 100px auto;
+            width: 100%;
+        }
+
+        #mlb2-37795615 .ml-form-embedWrapper {
+            background-color: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 4px solid #ffffff;
+            /* <-- Change this line */
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(12px);
+        }
+
+        #mlb2-37795615 .ml-form-embedContent h4 {
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin: 0 0 5px 0;
+            font-weight: 700;
+        }
+
+        #mlb2-37795615 .ml-form-embedContent p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        #mlb2-37795615 .ml-form-fieldRow input {
+            background-color: rgba(0, 0, 0, 0.4) !important;
+            color: #ffffff !important;
+            border: 4px solid #ffffff !important;
+            /* <-- Change this line */
+            border-radius: 8px !important;
+            padding: 14px 20px !important;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        #mlb2-37795615 .ml-form-fieldRow input:focus {
+            border-color: var(--accent-cyan) !important;
+        }
+
+        #mlb2-37795615 .ml-form-fieldRow input::placeholder {
+            color: var(--text-muted);
+        }
+
+        #mlb2-37795615 .ml-form-embedSubmit button {
+            background-color: var(--accent-cyan) !important;
+            border: none !important;
+            border-radius: 8px !important;
+            color: var(--bg-dark) !important;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+            padding: 14px !important;
+            width: 100% !important;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        #mlb2-37795615 .ml-form-embedSubmit button:hover {
+            box-shadow: 0 0 20px rgba(125, 249, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding-top: 60px;
+            }
+
+            .logo {
+                width: 180px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            #mlb2-37795615 .ml-form-embedWrapper {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow"></div>
+
+    <header>
+        <div class="logo-container">
+            <img src="arkrim-logo.png" alt="Arkrim Logo" class="logo">
+        </div>
+        <div class="transition-tag">formerly Arkly.io</div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Professional Archiving for the Decentralized Web.</h1>
+            <p>Arkrim integrates world-class digital curation standards with permaweb technology to provide a fully
+                sovereign ecosystem for permanent record-keeping.</p>
+        </section>
+
+        <div class="features-grid">
+            <div class="card">
+                <h3>Permaweb Storage</h3>
+                <p>Utilizing Arweave's sustainable endowment model to ensure data permanence for over 200 years. Built
+                    to survive technology shifts and network evolutions.</p>
+            </div>
+
+            <div class="card">
+                <h3>Curation & Processing</h3>
+                <p>Automated standards-based microservices for ingest, normalization, and preservation, rooted in the
+                    Archivematica philosophy of digital curation.</p>
+            </div>
+
+            <div class="card">
+                <h3>Fully Decentralized</h3>
+                <p>Zero central infrastructure. Powered by AO hyper-parallel compute and WASM-based tasks running across
+                    a global peer-to-peer network.</p>
+            </div>
+
+            <div class="card">
+                <h3>Sovereign Identity</h3>
+                <p>Linking records to immutable truth via W3C Decentralized Identifiers (DIDs) and Verifiable
+                    Credentials, ensuring cryptographically secure provenance.</p>
+            </div>
+        </div>
+
+        <section class="standards">
+            <h2>Architected on Global Standards</h2>
+            <div class="standards-list">
+                <span>ISO 14721 (OAIS)</span>
+                <span>ISO 15489</span>
+                <span>ISO 16363</span>
+                <span>METS / PREMIS</span>
+                <span>W3C DID v1.0</span>
+            </div>
+        </section>
+
+        <div id="mlb2-37795615" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37795615">
+            <div class="ml-form-align-center ">
+                <div class="ml-form-embedWrapper embedForm">
+                    <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+
+                        <div class="ml-form-embedContent">
+                            <h4>Keep me posted</h4>
+                            <p>Your email will not be shared.</p>
+                        </div>
+
+                        <form class="ml-block-form"
+                            action="https://assets.mailerlite.com/jsonp/2150158/forms/180658646067184945/subscribe"
+                            data-code="" method="post" target="_blank">
+                            <div class="ml-form-formContent">
+                                <div class="ml-form-fieldRow ml-last-item">
+                                    <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                                        <input aria-label="email" aria-required="true" type="email" class="form-control"
+                                            data-inputmask="" name="fields[email]" placeholder="Email"
+                                            autocomplete="email">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="ml-submit" value="1">
+
+                            <div class="ml-form-embedSubmit">
+                                <button type="submit" class="primary">Subscribe</button>
+                                <button disabled="disabled" style="display: none;" type="button" class="loading">
+                                    <div class="ml-form-embedSubmitLoad"></div>
+                                    <span class="sr-only">Loading...</span>
+                                </button>
+                            </div>
+
+                            <input type="hidden" name="anticsrf" value="true">
+                        </form>
+                    </div>
+
+                    <div class="ml-form-successBody row-success" style="display: none">
+                        <div class="ml-form-successContent">
+                            <h4>Thank you!</h4>
+                            <p>You have successfully joined our subscriber list.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Iona Systems Ltd | Archiving the Decentralized Future</p>
+    </footer>
+
+    <script>
+        function ml_webform_success_37795615() {
+            var $ = ml_jQuery || jQuery;
+            // Native JS fallback for display toggling to avoid jQuery dependency issues
+            document.querySelector('.ml-subscribe-form-37795615 .row-success').style.display = 'block';
+            document.querySelector('.ml-subscribe-form-37795615 .row-form').style.display = 'none';
+        }
+    </script>
+    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+        type="text/javascript"></script>
+    <script>
+        fetch("https://assets.mailerlite.com/jsonp/2150158/forms/180658646067184945/takel")
+    </script>
+</body>
+
+</html>
