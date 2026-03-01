@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="only light">
     <title>Arkrim | Next-Gen Archives & RIM</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@700&display=swap"
@@ -49,13 +50,16 @@
             position: relative;
             display: inline-block;
             margin-bottom: 30px;
+            background-color: transparent;
         }
 
         .logo {
             width: 220px;
             height: auto;
             display: block;
-            filter: drop-shadow(0 0 20px rgba(125, 249, 255, 0.3));
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
 
         .transition-tag {
@@ -75,6 +79,10 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* This ensures all children stay centered */
         }
 
         .hero {
@@ -219,12 +227,19 @@
         }
 
         /* Centering the Form Container */
-        #mlb2-37795615.ml-form-embedContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 100px auto;
-            width: 100%;
+        .ml-form-embedContainer {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            margin: 40px auto 100px auto !important;
+            width: 100% !important;
+            clear: both;
+        }
+
+        #mlb2-37795615 .ml-form-align-center {
+            display: flex !important;
+            justify-content: center !important;
+            width: 100% !important;
         }
 
         #mlb2-37795615 .ml-form-embedWrapper {
@@ -332,6 +347,7 @@
             <h1>Next-Generation Archives </br> and Records Management</h1>
             <p>Coming soon!</p>
         </section>
+
         <div class="features-grid">
             <div class="card">
                 <h3>Feature 1</h3>
