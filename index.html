@@ -108,10 +108,11 @@
         .features-grid {
             display: grid;
             /* This creates 3 equal columns on larger screens */
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-bottom: 80px;
-            width: 100%; /* Ensures the grid uses the full container width */
+            width: 100%;
+            /* Ensures the grid uses the full container width */
         }
 
         /* Media Query to handle smaller screens and smartphones */
@@ -136,7 +137,7 @@
             padding: 40px;
             backdrop-filter: blur(12px);
             transition: all 0.3s ease;
-            
+
             /* Ensures cards in the same row are equal height */
             display: flex;
             flex-direction: column;
@@ -157,7 +158,8 @@
             font-size: 0.95rem;
             color: var(--text-muted);
             margin: 0;
-            flex-grow: 1; /* This pushes the footer or bottom of the card down */
+            flex-grow: 1;
+            /* This pushes the footer or bottom of the card down */
         }
 
         .card:hover {
@@ -207,6 +209,11 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             opacity: 0.6;
             font-size: 0.9rem;
+        }
+
+        footer a {
+            color: inherit;
+            text-decoration: none;
         }
 
         /* MailerLite Form Custom Centered Styles */
@@ -404,7 +411,7 @@
                 <p>Feature 6 description</p>
             </div>
 
-                        <div class="card">
+            <div class="card">
                 <h3>Feature 7</h3>
                 <p>Feature 7 description</p>
             </div>
@@ -483,7 +490,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Iona Systems Ltd</p>
+        <p>&copy; 2026 <a href="https://iona.ltd">Iona Systems Ltd</a></p>
     </footer>
 
     <script>
